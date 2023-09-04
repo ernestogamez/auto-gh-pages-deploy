@@ -13,7 +13,7 @@ jobs:
       # Con esto clonamos nuestro código en el repositorio
         uses: actions/checkout@v3
 
-      - name: Use SSHY key
+      - name: Use SSH key
         run:
           mkdir -p ~/.ssh/
           echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
