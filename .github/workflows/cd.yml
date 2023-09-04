@@ -1,0 +1,26 @@
+name: CD Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  my-job-cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+      # Con esto clonamos nuestro código en el repositorio
+        uses: actions/checkout@v3
+
+      - name: Install
+      # Con esto ejecutamos las mismas versiones que en nuestro package.json
+        run: npm ci
+
+      - name: Build
+      # Ejecutamos el build definido en el package.json
+        run: npm run build
+
+      - name: Deploy
+      # Ejecutamos el deploy definido en el package.json
+        run: npm run deploy
